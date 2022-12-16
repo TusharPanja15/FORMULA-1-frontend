@@ -19,7 +19,7 @@ class App extends React.Component {
   // execute the code 
   componentDidMount() {
     fetch(
-      `${process.env.BASE_URL}events`)
+      `https://formula-1-backend-prod.onrender.com/events`)
       .then((res) => res.json())
       .then((json) => {
         // console.log(json.data)
