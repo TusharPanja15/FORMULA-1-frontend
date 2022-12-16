@@ -19,7 +19,7 @@ class App extends React.Component {
   // execute the code 
   componentDidMount() {
     fetch(
-      "http://localhost:8888/events")
+      `${process.env.BASE_URL}events`)
       .then((res) => res.json())
       .then((json) => {
         // console.log(json.data)
