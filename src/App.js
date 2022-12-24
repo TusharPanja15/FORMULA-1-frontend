@@ -1,57 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import EventsList from './components/Events/EventsList';
 import './App.css';
+import './styles/global.css';
 
+import saudi_arabia from "./images/tracks/saudi_arabia.png";
+import australia from "./images/tracks/australia.png";
+import bahrain from "./images/tracks/bahrain.png";
+import spain from "./images/tracks/spain.png";
 
-class App extends React.Component {
+function App() {
 
-  // Constructor 
-  constructor(props) {
-    super(props);
+  const eventsJSONData = [
+    { track_image_icon: saudi_arabia },
+    { track_image_icon: australia },
+    { track_image_icon: bahrain },
+    { track_image_icon: spain }
+  ];
 
-    this.state = {
-      items: [],
-      DataisLoaded: false
-    };
-  }
-
-  // ComponentDidMount is used to
-  // execute the code 
-  componentDidMount() {
-    fetch(
-      `https://formula-1-backend-prod.onrender.com/events`)
-      .then((res) => res.json())
-      .then((json) => {
-        // console.log(json.data)
-        this.setState({
-          items: json.data,
-          DataisLoaded: true
-        });
-      })
-  }
-  render() {
-    const { DataisLoaded, items } = this.state;
-    if (!DataisLoaded) return <div>
-      <h1> Pleses wait some time.... </h1> </div>;
-
-
-
-    return (
-      <div className="App">
-        <h1> FORMULA 1 </h1>
-        <br></br>
-        <br></br>
-        {items.map(element => (
-          <div>
-            <h3>{element.eventName}</h3>
-            <p>{element.eventDate}</p>
-            <p>{element.eventLocation}</p>
-            <br></br>
-          </div>
-        ))}
-      </div>
-    );
-  }
+  return (
+    <EventsList eventsData={eventsJSONData} />
+  );
 }
 
 export default App;
