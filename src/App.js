@@ -43,7 +43,7 @@ function App() {
   return (
     <React.Fragment>
       <NavigationBar />
-      <Carousel gif={gif}/>
+      <Carousel gif={gif} />
       <EventsList eventsData={eventsJSONData} />
     </React.Fragment>
   );
