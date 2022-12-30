@@ -1,8 +1,12 @@
 import React from 'react';
+import LazyLoad from 'react-lazy-load';
 
-import NavigationBar from './components/UI/NavBar';
-import Carousel from './components/UI/Carousel';
+import Button from './components/UI/Button/Button';
+import Carousel from './components/Carousel/Carousel';
+import NavigationBar from './components/Header/Navigation/NavBar';
 import EventsList from './components/Events/EventsList';
+import Content from './components/Content/Content';
+
 import './App.css';
 import './styles/global.css';
 
@@ -17,6 +21,7 @@ import bahrain_flag from "./images/country_flags/bahrain.jpg";
 import spain_flag from "./images/country_flags/azerbaijan.jpg";
 
 import gif from "./images/ezgif.com-gif-maker-9.gif";
+// import gif from "./images/tracks/saudi_arabia.png";
 
 
 function App() {
@@ -44,6 +49,7 @@ function App() {
     <React.Fragment>
       <NavigationBar />
       <Carousel gif={gif} />
+      <Content />
       <EventsList eventsData={eventsJSONData} />
     </React.Fragment>
   );

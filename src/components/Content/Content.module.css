@@ -1,0 +1,26 @@
+.flex_container {
+  display: flex;
+  padding: 110px;
+  /* row-gap: 60px; */
+  /* background: var(--background_color_EventCard); */
+}
+
+.card_container {
+  width: 100%;
+  border: 9px solid var(--formula1_red_color);
+  border-left: none;
+  border-top-right-radius: 23px;
+  border-bottom-right-radius: 23px;
+  height: 500px;
+}
+
+.card_container h1 {
+  position: relative;
+  top: -50px;
+  left: 0;
+  text-align: center;
+  background: white;
+  width: 20%;
+  /* margin-top: -32px; */
+  /* border: 9px solid green; */
+}

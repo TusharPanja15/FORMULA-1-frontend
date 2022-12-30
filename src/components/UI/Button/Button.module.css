@@ -1,0 +1,14 @@
+.button {
+    width: 8rem;
+    height: 2.4rem;
+    background: transparent;
+    border-radius: 2px;
+    transition: .1s;
+}
+
+.button:hover {
+    background-color: aliceblue;
+    color: var(--formula1_red_color);
+    border: 1px solid var(--formula1_red_color);
+    transition: .1s;
+}
