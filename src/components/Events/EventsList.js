@@ -13,7 +13,7 @@ const EventsList = props => {
         <React.Fragment>
             <div className={classes.flex_container}>
                 {props.eventsData.map(event =>
-                    <Card className={classes.card_container} >
+                    <Card className={classes.card_container} key={Math.random()} >
                         <EventCountryFlag
                             countryFlagImage={event.flag_image_icon}
                             className={classes.card_flag_image}
@@ -22,7 +22,7 @@ const EventsList = props => {
                             imgURL={event.track_image_icon}
                             className={classes.card_image}
                         />
-                        <EventTitle className={classes.card_content} />
+                        <EventTitle className={classes.card_content} eventNamePROP={event.eventName} />
                     </Card>
                 )}
             </div>

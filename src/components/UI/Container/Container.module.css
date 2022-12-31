@@ -1,11 +1,18 @@
 .flex_container {
   display: flex;
-  padding: 110px;
+  /* flex-wrap: wrap; */
   /* row-gap: 60px; */
-  /* background: var(--background_color_EventCard); */
+  padding: 20px;
+  background: repeating-linear-gradient(
+    -50deg,
+    #efeff0 0px,
+    #c3c3c4 1px,
+    transparent 0.1%,
+    transparent 2%
+  );
 }
 
-.card_container {
+.container {
   width: 100%;
   border: 9px solid var(--formula1_red_color);
   border-left: none;
@@ -14,13 +21,18 @@
   height: 500px;
 }
 
-.card_container h1 {
+.container .header {
   position: relative;
   top: -50px;
   left: 0;
+  margin-bottom: 0;
   text-align: center;
   background: white;
   width: 20%;
-  /* margin-top: -32px; */
-  /* border: 9px solid green; */
+}
+
+@media (min-width: 730px) {
+  .container {
+    margin: 60px;
+  }
 }

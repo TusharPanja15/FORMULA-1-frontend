@@ -1,0 +1,27 @@
+.flex_container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 60px;
+  padding: 20px;
+  position: relative;
+}
+
+.update_cart_card {
+  background: white;
+}
+
+.cart_payment_button {
+  width: 100%;
+  height: auto;
+  border: 5px solid var(--formula1_red_color);
+  font-size: 50px;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+.cart_payment_button:hover {
+  background-color: var(--formula1_red_color);
+  border: 5px solid var(--formula1_red_color);
+  color: white;
+  transition: 0.2s;
+}

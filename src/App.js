@@ -1,11 +1,11 @@
-import React from 'react';
-import LazyLoad from 'react-lazy-load';
+import React, { useState, useEffect } from 'react';
 
-import Button from './components/UI/Button/Button';
+import Container from './components/UI/Container/Container';
 import Carousel from './components/Carousel/Carousel';
+import Cart from './components/Cart/Cart';
 import NavigationBar from './components/Header/Navigation/NavBar';
 import EventsList from './components/Events/EventsList';
-import Content from './components/Content/Content';
+import Constructors from './components/Constructors/Constructors';
 
 import './App.css';
 import './styles/global.css';
@@ -24,9 +24,28 @@ import gif from "./images/ezgif.com-gif-maker-9.gif";
 // import gif from "./images/tracks/saudi_arabia.png";
 
 
-function App() {
+const App = () => {
 
-  const eventsJSONData = [
+  const [eventData, setEventData] = useState([]);
+
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      fetch('https://formula-1-backend-prod.onrender.com/events')
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          setEventData(data.data);
+        })
+    }, 500);
+
+    return () => {
+      clearTimeout(interval);
+    }
+  }, []);
+
+
+  const test = [
     {
       track_image_icon: saudi_arabia_track,
       flag_image_icon: saudi_arabia_flag
@@ -42,15 +61,39 @@ function App() {
     {
       track_image_icon: spain_track,
       flag_image_icon: spain_flag
-    }
+    },
+    {
+      track_image_icon: saudi_arabia_track,
+      flag_image_icon: saudi_arabia_flag
+    },
+    {
+      track_image_icon: australia_track,
+      flag_image_icon: australia_flag
+    },
+    {
+      track_image_icon: bahrain_track,
+      flag_image_icon: bahrain_flag
+    },
   ];
+
+  const eventsJSONData = test.map(object => {
+    return {
+      ...object,
+      eventName: eventData.map(event => {
+        return event.eventName
+      })[1]
+    }
+  });
+
 
   return (
     <React.Fragment>
       <NavigationBar />
       <Carousel gif={gif} />
-      <Content />
-      <EventsList eventsData={eventsJSONData} />
+      <Container header={"Shop"} />
+      <Constructors />
+      <Cart header={"My Cart"} />
+      <EventsList eventsData={eventsJSONData} eventNameAPI={eventData.eventName} />
     </React.Fragment>
   );
 }

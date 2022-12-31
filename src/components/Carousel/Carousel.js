@@ -8,7 +8,6 @@ const Carousel = props => {
             <div className={classes.carousel}>
                 <img
                     src={props.gif}
-                    onContextMenu="return false;"
                     alt=""
                 />
                 <div className={classes.carousel_content}>
