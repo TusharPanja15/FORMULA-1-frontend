@@ -7,10 +7,14 @@ const Container = props => {
 
     return (
         <div className={`${classes.flex_container} ${props.className}`}>
-            <Card className={classes.container} >
-                <h1 className={classes.header}>{props.header}</h1>
-                {props.children}
-            </Card>
+            <div className={classes.container}>
+                <div className={classes.header}>
+                    <h1>{props.header}</h1>
+                </div>
+                <div className={classes.flex_card_container}>
+                    {props.children}
+                </div>
+            </div>
         </div>
     );
 };

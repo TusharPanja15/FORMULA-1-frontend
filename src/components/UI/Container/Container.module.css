@@ -1,7 +1,5 @@
 .flex_container {
   display: flex;
-  /* flex-wrap: wrap; */
-  /* row-gap: 60px; */
   padding: 20px;
   background: repeating-linear-gradient(
     -50deg,
@@ -14,14 +12,15 @@
 
 .container {
   width: 100%;
+  height: auto;
   border: 9px solid var(--formula1_red_color);
   border-left: none;
+  border-bottom: none;
   border-top-right-radius: 23px;
-  border-bottom-right-radius: 23px;
-  height: 500px;
+  /* border-bottom-right-radius: 23px; */
 }
 
-.container .header {
+.header {
   position: relative;
   top: -50px;
   left: 0;
@@ -29,6 +28,17 @@
   text-align: center;
   background: white;
   width: 20%;
+}
+
+.flex_card_container {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 100%; */
+  height: auto;
+  align-content: center;
+  padding: 20px;
+  row-gap: 100px;
+  column-gap: 60px;
 }
 
 @media (min-width: 730px) {
