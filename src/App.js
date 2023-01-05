@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 
 import Container from './components/UI/Container/Container';
 import Carousel from './components/Carousel/Carousel';
@@ -23,10 +23,40 @@ import spain_flag from "./images/country_flags/azerbaijan.jpg";
 import gif from "./images/ezgif.com-gif-maker-9.gif";
 // import gif from "./images/tracks/saudi_arabia.png";
 
+const getPage = (state, action) => {
+
+  if (action.page === "EVENT") {
+    return {
+      isHomePage: false,
+      isEventPage: true,
+      isCartPage: false
+    }
+  }
+
+  if (action.page === "CART") {
+    return {
+      isHomePage: false,
+      isEventPage: false,
+      isCartPage: true
+    }
+  }
+
+  return {
+    isHomePage: true,
+    isEventPage: false,
+    isCartPage: false
+  }
+}
 
 const App = () => {
 
   const [eventData, setEventData] = useState([]);
+
+  const [cartPageState, dispatchCartPage] = useReducer(getPage, {
+    isHomePage: true,
+    isEventPage: false,
+    isCartPage: false
+  });
 
   useEffect(() => {
     const interval = setTimeout(() => {
@@ -43,6 +73,20 @@ const App = () => {
       clearTimeout(interval);
     }
   }, []);
+
+
+  const getHome = () => {
+    dispatchCartPage({ page: "HOME" })
+  }
+
+  const getEvent = () => {
+    dispatchCartPage({ page: "EVENT" })
+  }
+
+  const getCart = () => {
+    dispatchCartPage({ page: "CART" })
+  };
+
 
 
   const test = [
@@ -85,15 +129,22 @@ const App = () => {
     }
   });
 
-
   return (
     <React.Fragment>
-      <MainHeader />
-      <Carousel gif={gif} />
-      <Container header={"Shop"} />
-      <Constructors />
-      <Cart header={"My Cart"} />
-      <EventsList header={"Events"} eventsData={eventsJSONData} eventNameAPI={eventData.eventName} />
+      <MainHeader showCart={getCart} showEvent={getEvent} showHome={getHome} />
+      {cartPageState.isHomePage && (
+        <React.Fragment>
+          <Carousel gif={gif} />
+          <Container header={"Shop"} />
+          <Constructors />
+        </React.Fragment>
+      )}
+      {cartPageState.isEventPage && (
+        <EventsList header={"Events"} eventsData={eventsJSONData} eventNameAPI={eventData.eventName} />
+      )}
+      {cartPageState.isCartPage && (
+        <Cart header={"My Cart"} />
+      )}
     </React.Fragment>
   );
 }

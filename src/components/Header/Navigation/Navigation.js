@@ -4,30 +4,30 @@ import Button from '../../UI/Button/Button';
 
 import classes from './Navigation.module.css';
 
-const NavigationBar = props => {
+const Navigation = props => {
 
-    return (
-        <React.Fragment>
-            <div className={classes.backdrop}></div>
-            
-            <nav className={classes.nav}>
-      <ul>
-        
+  return (
+    <React.Fragment>
+      <div className={classes.backdrop}></div>
+
+      <nav className={classes.nav}>
+        <ul>
+
           <li>
-            <a href="/">Users</a>
+            <Button value={"Cart"} onClick={props.props.showCart} />
           </li>
-        
+
           <li>
-            <a href="/">Admin</a>
+            <Button value={"Events"} onClick={props.props.showEvent}  />
           </li>
-        
+
           <li>
-            <button>Logout</button>
+            <Button value={"Home"} onClick={props.props.showHome}  />
           </li>
-      </ul>
-    </nav>
-        </React.Fragment>
-    );
+        </ul>
+      </nav>
+    </React.Fragment>
+  );
 };
 
-export default NavigationBar;
+export default Navigation;
