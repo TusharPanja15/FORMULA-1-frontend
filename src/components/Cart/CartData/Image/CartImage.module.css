@@ -1,0 +1,11 @@
+.cart_image_container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.cart_image {
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}

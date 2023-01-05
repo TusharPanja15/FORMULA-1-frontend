@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Container from './components/UI/Container/Container';
 import Carousel from './components/Carousel/Carousel';
 import Cart from './components/Cart/Cart';
-import NavigationBar from './components/Header/Navigation/NavBar';
+import MainHeader from './components/Header/MainHeader/MainHeader';
 import EventsList from './components/Events/EventsList';
 import Constructors from './components/Constructors/Constructors';
 
@@ -88,12 +88,12 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <NavigationBar />
+      <MainHeader />
       <Carousel gif={gif} />
       <Container header={"Shop"} />
       <Constructors />
       <Cart header={"My Cart"} />
-      <EventsList eventsData={eventsJSONData} eventNameAPI={eventData.eventName} />
+      <EventsList header={"Events"} eventsData={eventsJSONData} eventNameAPI={eventData.eventName} />
     </React.Fragment>
   );
 }
